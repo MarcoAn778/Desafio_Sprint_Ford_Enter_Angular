@@ -1,1 +1,27 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="lado-imagem">
+    <img src="assets/ranger.png" alt="Ford Ranger">
+  </div>
+
+  <div class="login-card">
+    <img src="assets/ford.png" class="logo" alt="Ford">
+
+    <h2>Boas-vindas</h2>
+
+    <input 
+      type="text"
+      placeholder="Insira seu usuário"
+      [(ngModel)]="nome"
+    >
+
+    <input 
+      type="password"
+      placeholder="Insira sua senha"
+      [(ngModel)]="senha"
+    >
+
+    <button (click)="entrar()">Entrar</button>
+
+    <p class="erro" *ngIf="erro">{{ erro }}</p>
+  </div>
+</div>

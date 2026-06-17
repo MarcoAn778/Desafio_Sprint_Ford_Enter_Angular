@@ -24,6 +24,10 @@ export class Login {
   entrar(): void {
     this.erro = '';
 
+    if (!this.nome || !this.senha){
+      this.erro = 'Por favor, preencha nome e senha.';
+      return;
+    }
     this.authService.login(this.nome, this.senha).subscribe({
       next: usuario => {
         localStorage.setItem('usuario', JSON.stringify(usuario));

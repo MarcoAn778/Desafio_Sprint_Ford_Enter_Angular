@@ -1,9 +1,18 @@
 import { Component } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './home.html',
-  styleUrl: './home.css',
+  styleUrl: './home.css'
 })
-export class Home {}
+export class Home {
+  constructor(private router: Router) {}
+
+  logout(): void {
+    localStorage.removeItem('usuario');
+    this.router.navigate(['/login']);
+  }
+}

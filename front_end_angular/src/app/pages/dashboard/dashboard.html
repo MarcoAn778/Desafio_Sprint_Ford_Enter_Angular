@@ -1,1 +1,68 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+  <h2>Dashboard FORD</h2>
+
+  <div class="cards">
+    <div class="card">
+      <label>Veículo</label>
+      <select [(ngModel)]="veiculoSelecionado" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let veiculo of veiculos" [ngValue]="veiculo">
+          {{ veiculo.vehicle }}
+        </option>
+      </select>
+    </div>
+
+    <div class="card">
+      <h4>Total de Vendas</h4>
+      <p>{{ veiculoSelecionado?.volumetotal }}</p>
+    </div>
+
+    <div class="card">
+      <h4>Conectados</h4>
+      <p>{{ veiculoSelecionado?.connected }}</p>
+    </div>
+
+    <div class="card">
+      <h4>Update Software</h4>
+      <p>{{ veiculoSelecionado?.softwareUpdates }}</p>
+    </div>
+  </div>
+
+  <div class="imagem-veiculo" *ngIf="veiculoSelecionado">
+    <img [src]="veiculoSelecionado.img" [alt]="veiculoSelecionado.vehicle">
+  </div>
+
+  <div class="busca-vin">
+    <input 
+      type="text"
+      placeholder="Digite o código VIN"
+      [(ngModel)]="vin"
+    >
+    <button (click)="buscarVin()">Buscar</button>
+  </div>
+
+  <p class="erro" *ngIf="erroVin">{{ erroVin }}</p>
+
+  <table *ngIf="dadosVeiculo">
+    <thead>
+      <tr>
+        <th>Código - VIN</th>
+        <th>Odômetro</th>
+        <th>Nível de Combustível</th>
+        <th>Status</th>
+        <th>Lat.</th>
+        <th>Long.</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>{{ vin }}</td>
+        <td>{{ dadosVeiculo.odometro }}</td>
+        <td>{{ dadosVeiculo.nivelCombustivel }}%</td>
+        <td>{{ dadosVeiculo.status }}</td>
+        <td>{{ dadosVeiculo.lat }}</td>
+        <td>{{ dadosVeiculo.long }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

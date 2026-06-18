@@ -1,10 +1,26 @@
-<div class="dashboard">
+<div class="dashboard-container">
+  <button class="botao-menu" (click)="abrirMenu()">☰</button>
+
+  <aside class="menu-lateral" [class.aberto]="menuAberto">
+    <img src="img/ford.png" alt="Ford" class="logo-menu" />
+
+    <a routerLink="/home">Home</a>
+    <a routerLink="/dashboard">Dashboard</a>
+
+    <button type="button" (click)="logout()">Logout</button>
+  </aside>
+
+  @if (menuAberto) {
+    <div class="sombra-menu" (click)="fecharMenu()"></div>
+  }
+
   <h2>Dashboard FORD</h2>
 
-  <div class="cards">
-    <div class="card">
+  <section class="area-superior">
+    <div class="card seletor">
       <label>Veículo</label>
-      <select [(ngModel)]="veiculoSelecionado" [ngModelOptions]="{standalone: true}">
+
+      <select [(ngModel)]="veiculoSelecionado">
         <option *ngFor="let veiculo of veiculos" [ngValue]="veiculo">
           {{ veiculo.vehicle }}
         </option>
@@ -25,44 +41,51 @@
       <h4>Update Software</h4>
       <p>{{ veiculoSelecionado?.softwareUpdates }}</p>
     </div>
-  </div>
+  </section>
 
-  <div class="imagem-veiculo" *ngIf="veiculoSelecionado">
-    <img [src]="veiculoSelecionado.img" [alt]="veiculoSelecionado.vehicle">
-  </div>
+  <main class="conteudo-dashboard">
+    <section class="imagem-veiculo" *ngIf="veiculoSelecionado">
+      <img [src]="veiculoSelecionado.img" [alt]="veiculoSelecionado.vehicle" />
+    </section>
 
-  <div class="busca-vin">
-    <input
-        type="text"
-        placeholder="Digite o código VIN"
-        [(ngModel)]="vin"
-        (ngModelChange)="aoDigitarVin()"
-    />
-  </div>
+    <section class="area-tabela">
+      <!-- sua tabela aqui -->
+    </section>
+  </main>
 
-  <p class="erro" *ngIf="erroVin">{{ erroVin }}</p>
+  <footer class="rodape-tabela">
+    <table>
+      <thead>
+        <tr>
+          <th>Código - VIN</th>
+          <th>Odômetro</th>
+          <th>Nível de Combustível</th>
+          <th>Status</th>
+          <th>Lat.</th>
+          <th>Long.</th>
+        </tr>
+      </thead>
 
-  <table *ngIf="dadosVeiculo">
-    <thead>
-      <tr>
-        <th>Código - VIN</th>
-        <th>Odômetro</th>
-        <th>Nível de Combustível</th>
-        <th>Status</th>
-        <th>Lat.</th>
-        <th>Long.</th>
-      </tr>
-    </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input
+              type="text"
+              [(ngModel)]="vin"
+              (ngModelChange)="aoDigitarVin()"
+              placeholder="Digite o VIN"
+            />
+          </td>
 
-    <tbody>
-      <tr>
-        <td>{{ vin }}</td>
-        <td>{{ dadosVeiculo.odometro }}</td>
-        <td>{{ dadosVeiculo.nivelCombustivel }}%</td>
-        <td>{{ dadosVeiculo.status }}</td>
-        <td>{{ dadosVeiculo.lat }}</td>
-        <td>{{ dadosVeiculo.long }}</td>
-      </tr>
-    </tbody>
-  </table>
+          <td>{{ dadosVeiculo?.odometro || '' }}</td>
+          <td>{{ dadosVeiculo ? dadosVeiculo.nivelCombustivel + '%' : '' }}</td>
+          <td>{{ dadosVeiculo?.status || '' }}</td>
+          <td>{{ dadosVeiculo?.lat || '' }}</td>
+          <td>{{ dadosVeiculo?.long || '' }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="erro-vin" *ngIf="erroVin">{{ erroVin }}</p>
+  </footer>
 </div>

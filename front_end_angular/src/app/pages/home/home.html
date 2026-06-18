@@ -1,13 +1,23 @@
 <div class="home-container">
-  <nav>
-    <img src="../../../../assets/mustang.png" alt="Ford">
-    <a routerLink="/dashboard">Dashboard</a>
-    <button (click)="logout()">Logout</button>
-  </nav>
+  <button class="botao-menu" (click)="abrirMenu()">
+    ☰
+  </button>
 
-  <div class="card-boas-vindas">
+  <aside class="menu-lateral" [class.aberto]="menuAberto">
+    <img src="img/ford.png" alt="Ford" class="logo-menu">
+
+    <a routerLink="/home">Home</a>
+    <a routerLink="/dashboard">Dashboard</a>
+    <button type="button" (click)="logout()">Logout</button>
+  </aside>
+
+  <div class="sombra-menu" 
+       *ngIf="menuAberto" 
+       (click)="fecharMenu()">
+  </div>
+
+  <section class="card-home">
     <h3>Sistema de dados FORD</h3>
     <p>Seja bem-vindo(a)!</p>
-    <a routerLink="/dashboard">Acessar dashboard</a>
-  </div>
+  </section>
 </div>

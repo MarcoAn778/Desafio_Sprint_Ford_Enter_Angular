@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -15,26 +15,37 @@ export class Login {
   nome = '';
   senha = '';
   erro = '';
+  mostrarSenha = false;
+  aceitouLgpd = false;
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   entrar(): void {
-    this.erro = '';
-
-    if (!this.nome || !this.senha){
+    if (!this.nome.trim() || !this.senha.trim()) {
       this.erro = 'Por favor, preencha nome e senha.';
       return;
     }
+
+    if (!this.aceitouLgpd) {
+      this.erro = 'Você precisa aceitar os termos e condições para continuar.';
+      return;
+    }
+
     this.authService.login(this.nome, this.senha).subscribe({
       next: usuario => {
         localStorage.setItem('usuario', JSON.stringify(usuario));
         this.router.navigate(['/home']);
       },
-      error: erro => {
-        this.erro = erro.error?.message || 'Erro ao fazer login.';
+      error: respostaErro => {
+        this.erro =
+          respostaErro.error?.message ||
+          'O nome de usuário ou senha está incorreto ou não foi cadastrado!';
+
+        this.cdr.detectChanges();
       }
     });
   }

@@ -1,27 +1,55 @@
 <div class="login-container">
   <div class="lado-imagem">
-    <img src="assets/ranger.png" alt="Ford Ranger">
+    <img src="img/ranger.png" alt="Ford Ranger">
   </div>
 
   <div class="login-card">
-    <img src="assets/ford.png" class="logo" alt="Ford">
+    <img src="img/ford.png" class="logo" alt="Ford">
 
     <h2>Boas-vindas</h2>
 
-    <input 
-      type="text"
-      placeholder="Insira seu usuário"
-      [(ngModel)]="nome"
-    >
+    <form class="form-login" (ngSubmit)="entrar()" #formLogin="ngForm">
+      <div class="campo">
+        <i class="bi bi-person-fill icone-esquerda"></i>
+        <input
+          type="text"
+          name="nome"
+          placeholder="Insira seu usuário"
+          [(ngModel)]="nome">
+      </div>
 
-    <input 
-      type="password"
-      placeholder="Insira sua senha"
-      [(ngModel)]="senha"
-    >
+      <div class="campo">
+        <i class="bi bi-lock-fill icone-esquerda"></i>
+        <input
+          [type]="mostrarSenha ? 'text' : 'password'"
+          name="senha"
+          placeholder="Insira sua senha"
+          [(ngModel)]="senha">
 
-    <button (click)="entrar()">Entrar</button>
+        <i
+          class="bi icone-direita"
+          [class.bi-eye-fill]="!mostrarSenha"
+          [class.bi-eye-slash-fill]="mostrarSenha"
+          (click)="mostrarSenha = !mostrarSenha">
+        </i>
+      </div>
+      
+      <div class="lgpd">
+        <input
+          type="checkbox"
+          name="aceitouLgpd"
+          [(ngModel)]="aceitouLgpd">
+        <span>
+          Li e aceito os termos de uso e a política de privacidade conforme os 
+          <a href="https://www.ford.com.br/politica-de-privacidade/" target="_blank">Termos e Condições</a>.
+        </span>
+      </div>
 
-    <p class="erro" *ngIf="erro">{{ erro }}</p>
+      <button type="submit">Entrar</button>
+
+      <div class="erro" *ngIf="erro">
+        {{ erro }}
+      </div>
+    </form>
   </div>
 </div>

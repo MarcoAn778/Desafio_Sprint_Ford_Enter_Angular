@@ -94,16 +94,21 @@ h2 {
   box-sizing: border-box;
 }
 
-.card h4,
+.card h3,
 .card label {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #333;
-  font-size: 13px;
-  font-weight: normal;
+  font-size: 18px;
+  font-weight: bold;
   margin: 0 0 18px;
 }
 
 .card p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #0074c8;
   font-size: 22px;
   font-weight: bold;

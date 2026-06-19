@@ -10,7 +10,7 @@
   background-image: url('/img/ranger.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 82%;
+  background-size: 68%;
   overflow: hidden;
 }
 
@@ -73,38 +73,54 @@
 
 .card-home {
   position: absolute;
-  top: 28%;
-  left: 33%;
-  width: 360px;
-  height: 250px;
-  border: 1px solid #999;
-  background: rgba(255, 255, 255, 0.68);
-  padding: 18px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  height: 300px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  padding: 30px;
   box-sizing: border-box;
 }
 
 .card-home h3 {
-  margin: 0 0 18px;
-  color: #333;
-  font-size: 13px;
-  font-weight: normal;
+  margin: 0 0 20px;
+  color: #1b357e;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .card-home p {
   color: #008ecf;
-  font-size: 13px;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
   margin: 0;
 }
 
 @media (max-width: 768px) {
-  .home-container {
-    background-size: 120%;
-  }
-
   .card-home {
-    left: 50%;
-    top: 30%;
-    transform: translateX(-50%);
-    width: 80%;
-  }
+  width: 90%;
+  max-width: 520px;
+  height: auto;
+  min-height: 250px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.home-container {
+  background-size: 100%;
+}
 }

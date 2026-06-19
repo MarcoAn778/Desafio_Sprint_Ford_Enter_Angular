@@ -1,0 +1,70 @@
+footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+
+  background-color: #1B357E;
+
+  padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.social-media {
+  justify-self: start;
+}
+
+.social-media ul {
+  list-style: none;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  margin: 0;
+  padding: 0;
+}
+
+.redesociais {
+  color: white;
+  font-weight: bold;
+}
+
+.social-media img {
+  width: 30px;
+  display: block;
+}
+
+.copyright {
+  justify-self: center;
+}
+
+.copyright p {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.logo-footer {
+  justify-self: end;
+}
+
+.logo-footer img {
+  width: 100px;
+}
+
+@media (max-width: 768px) {
+
+  footer {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .social-media,
+  .copyright,
+  .logo-footer {
+    justify-self: center;
+  }
+}

@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { Subject, debounceTime, distinctUntilChanged, filter } from 'rxjs';
 import { Router, RouterLink } from '@angular/router';
 import { VehicleService } from '../../services/vehicle';
+import { Footer } from '../../components/footer/footer';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, Footer],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })

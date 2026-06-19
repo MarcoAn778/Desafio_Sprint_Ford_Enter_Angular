@@ -6,9 +6,9 @@
 }
 
 .dashboard-container {
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
   position: relative;
-  padding: 22px 45px 95px;
+  padding: 22px 45px 25px;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -73,8 +73,8 @@
 h2 {
   text-align: center;
   color: #005a9c;
-  font-size: 20px;
-  margin: 0 0 34px;
+  font-size: 30px;
+  margin: 50px 0 100px;
 }
 
 .area-superior {
@@ -82,12 +82,13 @@ h2 {
   justify-content: center;
   align-items: stretch;
   gap: 36px;
-  margin-bottom: 20px;
+  margin-top: -10px;
+  margin-bottom: auto;
 }
 
 .card {
-  width: 180px;
-  height: 105px;
+  width: 200px;
+  height: 125px;
   border: 1px solid #999;
   background: #fff;
   padding: 14px;
@@ -123,10 +124,11 @@ h2 {
 
 
 .conteudo-dashboard {
-  margin-top: 20px;
+  min-height: calc(100vh - 300px);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 
@@ -136,22 +138,15 @@ h2 {
 }
 
 .imagem-veiculo img {
-  width: 560px;
-  max-height: 300px;
+  width: 880px;
+  max-height: 460px;
   object-fit: contain;
-}
-
-.rodape-tabela {
-  position: fixed;
-  left: 45px;
-  right: 45px;
-  bottom: 22px;
-  background: #fff;
 }
 
 .area-tabela {
   width: 96%;
-  margin-top: -10px;
+  margin-top: auto;
+  margin-bottom: 10px;
 }
 
 table {

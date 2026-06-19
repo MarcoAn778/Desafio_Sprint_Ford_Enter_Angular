@@ -21,7 +21,7 @@
   z-index: 1000;
   border: none;
   background: transparent;
-  color: #008a4e;
+  color: #1b357e;
   font-size: 22px;
   cursor: pointer;
 }
@@ -56,7 +56,7 @@
   border: none;
   background: transparent;
   text-align: left;
-  color: #00a859;
+  color: #1b357e;
   font-size: 13px;
   margin-bottom: 10px;
   text-decoration: none;
@@ -67,7 +67,7 @@
 .sombra-menu {
   position: fixed;
   inset: 0;
-  background: rgba(0, 70, 30, 0.65);
+  background: rgba(0, 0, 0, 0.397);
   z-index: 1050;
 }
 
